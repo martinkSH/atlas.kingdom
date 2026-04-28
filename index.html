@@ -172,7 +172,6 @@
     .platform-card:nth-child(5) { animation-delay: 0.62s; }
     .platform-card:nth-child(6) { animation-delay: 0.7s; }
     .platform-card:nth-child(7) { animation-delay: 0.78s; }
-    .platform-card:nth-child(8) { animation-delay: 0.86s; }
 
     .mini-logo {
       width: 44px;
@@ -215,8 +214,6 @@
     .card-tavern  .ml-atlas  { color: #dc6464; }
     .card-ops     .mini-logo { border-color: rgba(30,160,255,0.35); }
     .card-ops     .ml-atlas  { color: #1ea0ff; }
-    .card-contacts .mini-logo { border-color: rgba(224,138,160,0.35); }
-    .card-contacts .ml-atlas  { color: #e08aa0; }
 
     .card-info { flex: 1; min-width: 0; }
     .card-title {
@@ -278,6 +275,33 @@
       animation: fadeUp 1s ease 0.9s both;
     }
 
+
+    /* ── Heartbeat user count ── */
+    .user-count {
+      font-family: 'Cinzel', serif;
+      font-size: 0.58rem;
+      font-weight: 600;
+      color: var(--gold);
+      min-width: 16px;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    .user-count.visible { opacity: 1; }
+    .user-count-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1px;
+      flex-shrink: 0;
+    }
+    .user-count-label {
+      font-size: 0.42rem;
+      letter-spacing: 0.1em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+    }
+
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(12px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -307,83 +331,101 @@
 
     <div class="platform-list">
 
-      <a class="platform-card card-onduty" href="https://atlas-onduty.vercel.app/dashboard" target="_blank">
+      <a class="platform-card card-onduty" data-platform="onduty" href="https://atlas-onduty.vercel.app/dashboard" target="_blank">
         <div class="mini-logo"><span class="ml-atlas">ATLAS</span><span class="ml-sub">OnDuty</span></div>
         <div class="card-info">
           <div class="card-title"><span>ATLAS /</span> OnDuty</div>
           <div class="card-desc">Operaciones de guardistas · tiempo real</div>
         </div>
         <div class="status-dot"></div>
+        <div class="user-count-wrap">
+          <span class="user-count" id="count-onduty"></span>
+          <span class="user-count-label" id="label-onduty"></span>
+        </div>
         <div class="card-btn">Ingresar →</div>
       </a>
 
-      <a class="platform-card card-coms" href="https://sayhueque-mensajeria.vercel.app/inbox" target="_blank">
+      <a class="platform-card card-coms" data-platform="coms" href="https://sayhueque-mensajeria.vercel.app/inbox" target="_blank">
         <div class="mini-logo"><span class="ml-atlas">ATLAS</span><span class="ml-sub">Coms</span></div>
         <div class="card-info">
           <div class="card-title"><span>ATLAS /</span> Coms</div>
           <div class="card-desc">Mensajería interna · comunicaciones</div>
         </div>
         <div class="status-dot"></div>
+        <div class="user-count-wrap">
+          <span class="user-count" id="count-coms"></span>
+          <span class="user-count-label" id="label-coms"></span>
+        </div>
         <div class="card-btn">Ingresar →</div>
       </a>
 
-      <a class="platform-card card-core" href="https://sayhueque-gerencial-45d7.vercel.app/" target="_blank">
+      <a class="platform-card card-core" data-platform="core" href="https://sayhueque-gerencial-45d7.vercel.app/" target="_blank">
         <div class="mini-logo"><span class="ml-atlas">ATLAS</span><span class="ml-sub">Core</span></div>
         <div class="card-info">
           <div class="card-title"><span>ATLAS /</span> Core</div>
           <div class="card-desc">Panel gerencial · métricas y gestión</div>
         </div>
         <div class="status-dot"></div>
+        <div class="user-count-wrap">
+          <span class="user-count" id="count-core"></span>
+          <span class="user-count-label" id="label-core"></span>
+        </div>
         <div class="card-btn">Ingresar →</div>
       </a>
 
-      <a class="platform-card card-archive" href="https://tickets-bbdd-muhz.vercel.app/dashboard" target="_blank">
+      <a class="platform-card card-archive" data-platform="archive" href="https://tickets-bbdd-muhz.vercel.app/dashboard" target="_blank">
         <div class="mini-logo"><span class="ml-atlas">ATLAS</span><span class="ml-sub">Archive</span></div>
         <div class="card-info">
           <div class="card-title"><span>ATLAS /</span> Archive</div>
           <div class="card-desc">Gestión de Base de Datos</div>
         </div>
         <div class="status-dot"></div>
+        <div class="user-count-wrap">
+          <span class="user-count" id="count-archive"></span>
+          <span class="user-count-label" id="label-archive"></span>
+        </div>
         <div class="card-btn">Ingresar →</div>
       </a>
 
-      <a class="platform-card card-sherpa" href="https://sayhueque-guias.vercel.app/" target="_blank">
+      <a class="platform-card card-sherpa" data-platform="sherpa" href="https://sayhueque-guias.vercel.app/" target="_blank">
         <div class="mini-logo"><span class="ml-atlas">ATLAS</span><span class="ml-sub">Sherpa</span></div>
         <div class="card-info">
           <div class="card-title"><span>ATLAS /</span> Sherpa</div>
           <div class="card-desc">Portal de guías · confirmaciones</div>
         </div>
         <div class="status-dot"></div>
+        <div class="user-count-wrap">
+          <span class="user-count" id="count-sherpa"></span>
+          <span class="user-count-label" id="label-sherpa"></span>
+        </div>
         <div class="card-btn">Ingresar →</div>
       </a>
 
-      <a class="platform-card card-tavern" href="https://listado-alojamiento.vercel.app/hoteles" target="_blank">
+      <a class="platform-card card-tavern" data-platform="tavern" href="https://listado-alojamiento.vercel.app/hoteles" target="_blank">
         <div class="mini-logo"><span class="ml-atlas">ATLAS</span><span class="ml-sub">Tavern</span></div>
         <div class="card-info">
           <div class="card-title"><span>ATLAS /</span> Tavern</div>
           <div class="card-desc">Alojamientos · listado y gestión</div>
         </div>
         <div class="status-dot"></div>
+        <div class="user-count-wrap">
+          <span class="user-count" id="count-tavern"></span>
+          <span class="user-count-label" id="label-tavern"></span>
+        </div>
         <div class="card-btn">Ingresar →</div>
       </a>
 
-      <a class="platform-card card-ops" href="https://atlas-ops-brown.vercel.app/login" target="_blank">
+      <a class="platform-card card-ops" data-platform="ops" href="https://atlas-ops-brown.vercel.app/login" target="_blank">
         <div class="mini-logo"><span class="ml-atlas">ATLAS</span><span class="ml-sub">Ops</span></div>
         <div class="card-info">
           <div class="card-title"><span>ATLAS /</span> Ops</div>
           <div class="card-desc">Panel de operaciones · gestión central</div>
         </div>
         <div class="status-dot"></div>
-        <div class="card-btn">Ingresar →</div>
-      </a>
-
-      <a class="platform-card card-contacts" href="https://atlas-contacts.vercel.app/login" target="_blank">
-        <div class="mini-logo"><span class="ml-atlas">ATLAS</span><span class="ml-sub">Contacts</span></div>
-        <div class="card-info">
-          <div class="card-title"><span>ATLAS /</span> Contacts</div>
-          <div class="card-desc">CRM · agencias, contactos y eventos</div>
+        <div class="user-count-wrap">
+          <span class="user-count" id="count-ops"></span>
+          <span class="user-count-label" id="label-ops"></span>
         </div>
-        <div class="status-dot"></div>
         <div class="card-btn">Ingresar →</div>
       </a>
 
@@ -393,5 +435,55 @@
   </div>
 
 </div>
+
+<script>
+  (function() {
+    var HUB = 'https://qnpapnambjzzufxgpvaf.supabase.co';
+    var KEY  = 'REEMPLAZAR_CON_ANON_KEY_DE_ATLASCONTACTS';
+    var WIN  = 5; // minutos de ventana para "activo"
+
+    function fetchCounts() {
+      var since = new Date(Date.now() - WIN * 60 * 1000).toISOString();
+      fetch(HUB + '/rest/v1/platform_heartbeats?select=platform&last_seen=gte.' + since, {
+        headers: { 'apikey': KEY, 'Authorization': 'Bearer ' + KEY }
+      })
+      .then(function(r) { return r.json(); })
+      .then(function(rows) {
+        var counts = {};
+        rows.forEach(function(r) {
+          counts[r.platform] = (counts[r.platform] || 0) + 1;
+        });
+
+        var platforms = ['onduty','coms','core','archive','sherpa','tavern','ops'];
+        platforms.forEach(function(p) {
+          var countEl = document.getElementById('count-' + p);
+          var labelEl = document.getElementById('label-' + p);
+          var card    = document.querySelector('[data-platform="' + p + '"]');
+          if (!card) return;
+          var dot = card.querySelector('.status-dot');
+          var n   = counts[p] || 0;
+
+          if (countEl) {
+            countEl.textContent = n > 0 ? n : '';
+            countEl.classList.toggle('visible', n > 0);
+          }
+          if (labelEl) {
+            labelEl.textContent = n > 0 ? (n === 1 ? 'activo' : 'activos') : '';
+          }
+          if (dot) {
+            dot.style.background = n > 0 ? '#4ade80' : '#2a2a2a';
+            dot.style.boxShadow  = n > 0 ? '0 0 6px rgba(74,222,128,0.6)' : 'none';
+          }
+        });
+      })
+      .catch(function() {}); // silencioso
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      fetchCounts();
+      setInterval(fetchCounts, 30000);
+    });
+  })();
+</script>
 </body>
 </html>
